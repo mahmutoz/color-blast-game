@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: 'Roboto Mono', monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  list-style: none;
+}
+
+nav li {
+  margin-bottom: 1rem;
+}
+
+.nav-btn {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  line-height: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  transition: 0.2s background-color ease-in;
+}
+
+.nav-btn img {
+  width: 1rem;
+  transform: scaleX(-1); /* for mirror reflection */
+}
+
+.nav-btn:hover {
+  background-color: #eee;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  height: 6rem;
+  margin-bottom: 1rem;
+  box-shadow: 1px 0 3px 2px rgba(0, 0, 0, 0.1);
+  background-color: #333;
+  color: #ffffff;
+  font-size: 3rem;
+  border-radius: 3px;
+}
+
+.game-board {
+  width: 60rem;
+  height: 45rem;
+  background-color: #faedf0;
+}
+
+.color-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.btn {
+  width: 10rem;
+  height: 6rem;
+  margin-top: 2rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 150ms opacity ease-in;
+  position: relative;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn:active {
+  border-top: 2px solid #555;
+  bottom: 1px;
+}
+
+@media only screen and (max-width: 992px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 7px;
+  }
+}
