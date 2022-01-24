@@ -191,6 +191,7 @@ input[type='checkbox']:checked ~ .how-to-game {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  pointer-events: visible;
 }
 
 .btn {
@@ -213,7 +214,6 @@ input[type='checkbox']:checked ~ .how-to-game {
 }
 
 .game-over-modal {
-  display: flex;
   display: none;
   flex-direction: column;
   align-items: center;

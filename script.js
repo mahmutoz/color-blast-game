@@ -12,6 +12,7 @@ function start() {
   let stepCount = 0;
   const rowCount = 30;
   const columnCount = 40;
+  const flag = 0;
 
   createBlock();
 
@@ -50,7 +51,7 @@ function start() {
       for (let i = 0; i < rowCount; i++) {
         for (let j = 0; j < columnCount; j++) {
           if (grid[i][j] == 0) {
-            grid = checkBlock(grid, i, j, index + 1);
+            grid = checkBlock(grid, i, j, index + 1, flag);
           }
         }
       }
@@ -59,33 +60,44 @@ function start() {
     });
   });
 
-  function checkBlock(grid, i, j, index) {
+  function checkBlock(grid, i, j, index, flag) {
     if (grid[i]?.[j + 1] == index) {
       grid[i][j + 1] = 0;
-    }
-
-    if (j >= 1) {
-      if (grid[i][j - 1] == index) {
-        grid[i][j - 1] = 0;
-      }
-    }
-
-    if (i >= 1) {
-      if (grid[i - 1][j] == index) {
-        grid[i - 1][j] = 0;
-      }
+      flag++;
     }
 
     if (grid[i + 1]?.[j] == index) {
       grid[i + 1][j] = 0;
+      flag++;
     }
-    return grid;
+
+    if (grid[i]?.[j - 1] == index) {
+      grid[i][j - 1] = 0;
+      flag++;
+    }
+
+    if (grid[i - 1]?.[j] == index) {
+      grid[i - 1][j] = 0;
+      flag++;
+    }
+
+    if (grid[i]?.[j + 1] == index) {
+      grid[i + 1][j + 1] = 0;
+      flag++;
+    }
+
+    if (!flag) {
+      return grid;
+    }
+
+    return checkBlock(grid, i, j, index, 0);
   }
 
   function isFinish() {
     if (grid.every((i) => i.every((j) => j === 0))) {
       document.querySelector('.step').textContent = stepCount;
       document.querySelector('.game-over-modal').style.display = 'flex';
+      document.querySelector('.color-control ').style.pointerEvents = 'none';
     }
   }
 
@@ -93,7 +105,9 @@ function start() {
   document.querySelectorAll('.restart').forEach((btn) => {
     btn.addEventListener('click', () => {
       document.querySelector('.scoreboard').textContent = '0';
+      document.querySelector('.color-control ').style.pointerEvents = 'visible';
       document.querySelector('.game-over-modal').style.display = 'none';
+      stepCount = 0;
       grid = [];
       createBlock();
     });
