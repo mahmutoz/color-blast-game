@@ -36,10 +36,7 @@ function start() {
       for (let j = 0; j < columnCount; j++) {
         let divEl = document.createElement('div');
 
-        divEl.style.cssFloat = 'left';
         divEl.style.backgroundColor = colors[grid[i][j]];
-        divEl.style.width = '1.5rem';
-        divEl.style.height = '1.5rem';
         gameBoard.appendChild(divEl);
       }
     }

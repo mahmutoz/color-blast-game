@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
 
+:root {
+  --primary-color: #baabda;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -31,39 +35,126 @@ body {
 
 nav {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 3rem;
+  right: 0;
 }
 
 nav ul {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   list-style: none;
 }
 
 nav li {
-  margin-bottom: 1rem;
-}
-
-.nav-btn {
-  display: block;
-  width: 2rem;
-  height: 2rem;
-  line-height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: 0.5rem;
+  width: 3rem;
+  height: 3rem;
+  line-height: 3rem;
   border-radius: 50%;
   cursor: pointer;
-  background-color: #f5f5f5;
   transition: 0.2s background-color ease-in;
 }
 
-.nav-btn img {
-  width: 1rem;
+.nav-btn svg {
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  color: #fff;
   transform: scaleX(-1); /* for mirror reflection */
 }
 
-.nav-btn:hover {
+.nav li:hover {
   background-color: #eee;
+}
+
+.nav-btn,
+.modal-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 150%;
+  color: #fff;
+  background-color: var(--primary-color);
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  display: none;
+}
+
+input[type='checkbox']:checked ~ .how-to-game-wrapper,
+input[type='checkbox']:checked ~ .how-to-game {
+  display: flex;
+}
+
+.how-to-game {
+  position: absolute;
+  width: 60rem;
+  height: 60rem;
+  top: -3rem;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  backdrop-filter: blur(3px);
+  cursor: pointer;
+  display: none;
+}
+
+.how-to-game-wrapper {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 30rem;
+  height: 20rem;
+  padding: 1.5rem 1.4rem;
+  text-align: center;
+  background: #fdfdfd;
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: default;
+  z-index: 100;
+}
+
+.how-to-game-wrapper .close {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  top: 0.5rem;
+  right: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.how-to-game-wrapper h2 {
+  font-size: 200%;
+  color: #3e8e7e;
+}
+
+.how-to-game-wrapper p {
+  margin-top: 1rem;
+  line-height: 1.8;
+}
+
+.startBtn {
+  width: 15rem;
+  height: 4rem;
+  background: var(--primary-color);
+  margin-top: 1rem;
+  font-size: 170%;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
 }
 
 .scoreboard {
@@ -84,6 +175,12 @@ nav li {
   width: 60rem;
   height: 45rem;
   background-color: #faedf0;
+}
+
+.game-board div {
+  float: left;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .color-control {

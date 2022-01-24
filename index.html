@@ -13,10 +13,20 @@
         <ul>
           <li>
             <button class="nav-btn" onclick="location.reload()">
-              <img src="./img/reset.svg" alt="reset" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 21 21"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="matrix(0 1 1 0 2.5 2.5)"><path d="m3.98652376 1.07807068c-2.38377179 1.38514556-3.98652376 3.96636605-3.98652376 6.92192932 0 4.418278 3.581722 8 8 8s8-3.581722 8-8-3.581722-8-8-8"/><path d="m4 1v4h-4" transform="matrix(1 0 0 -1 0 6)"/></g></svg>
             </button>
           </li>
-          <li><button class="nav-btn">❔</button></li>
+          <li>
+            <label for="howToGame" class="modal-label">?</label>
+            <input type="checkbox" id="howToGame" checked>
+            <label for="howToGame" class="how-to-game"></label>
+            <div class="how-to-game-wrapper">
+              <label for="howToGame" class="close">X</label>
+              <h2>How To Game</h2>
+              <p>You start in the upper left corner of the gameboard at the grey square. Use the buttons to take over neighboring squares of the same color. The goal is to clear the field in as few moves as possible.</p>
+              <label for="howToGame" class="startBtn">OK</label>
+            </div>
+          </li>
         </ul>
       </nav>
       <div class="scoreboard">0</div>
@@ -29,6 +39,6 @@
         <button class="btn" style="background-color: #325288"></button>
       </div>
     </div>
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
   </body>
 </html>
