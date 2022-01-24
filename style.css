@@ -23,6 +23,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .container {
@@ -31,12 +32,13 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 0 2rem;
 }
 
 nav {
   position: absolute;
   top: 3rem;
-  right: 0;
+  right: 2rem;
 }
 
 nav ul {
@@ -222,7 +224,22 @@ input[type='checkbox']:checked ~ .how-to-game {
 }
 
 @media only screen and (max-width: 600px) {
-  html {
-    font-size: 7px;
+  .game-board {
+    width: 32rem;
+    height: 24rem;
+  }
+
+  .game-board div {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+
+  .btn {
+    width: 5.5rem;
+    height: 4rem;
+  }
+
+  .how-to-game {
+    height: 37rem;
   }
 }
