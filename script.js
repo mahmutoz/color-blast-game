@@ -60,7 +60,6 @@ function start() {
   });
 
   function checkBlock(grid, i, j, index) {
-    console.log(index);
     if (grid[i]?.[j + 1] == index) {
       grid[i][j + 1] = 0;
     }
@@ -85,9 +84,19 @@ function start() {
 
   function isFinish() {
     if (grid.every((i) => i.every((j) => j === 0))) {
-      alert('Bitti');
+      document.querySelector('.step').textContent = stepCount;
+      document.querySelector('.game-over-modal').style.display = 'flex';
     }
   }
-}
 
+  // Restart
+  document.querySelectorAll('.restart').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelector('.scoreboard').textContent = '0';
+      document.querySelector('.game-over-modal').style.display = 'none';
+      grid = [];
+      createBlock();
+    });
+  });
+}
 start();

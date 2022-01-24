@@ -61,7 +61,7 @@ nav li {
   transition: 0.2s background-color ease-in;
 }
 
-.nav-btn svg {
+.restart svg {
   display: inline-block;
   width: 1.6rem;
   height: 1.6rem;
@@ -73,7 +73,7 @@ nav li {
   background-color: #eee;
 }
 
-.nav-btn,
+.restart,
 .modal-label {
   display: flex;
   justify-content: center;
@@ -138,13 +138,14 @@ input[type='checkbox']:checked ~ .how-to-game {
   cursor: pointer;
 }
 
-.how-to-game-wrapper h2 {
+.how-to-game-wrapper h2,
+.game-over-modal h2 {
   font-size: 200%;
   color: #3e8e7e;
+  margin-bottom: 0.8rem;
 }
 
 .how-to-game-wrapper p {
-  margin-top: 1rem;
   line-height: 1.8;
 }
 
@@ -209,6 +210,30 @@ input[type='checkbox']:checked ~ .how-to-game {
 .btn:active {
   border-top: 2px solid #555;
   bottom: 1px;
+}
+
+.game-over-modal {
+  display: flex;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1.8rem;
+  position: absolute;
+  background: #fdfdfd;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.game-over-modal button {
+  width: 10rem;
+  height: 2rem;
+  background: var(--primary-color);
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 0;
+  color: #fff;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 992px) {
