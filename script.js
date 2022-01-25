@@ -1,3 +1,5 @@
+'use strict';
+
 function start() {
   const colors = [
     '#faedf0',
@@ -12,7 +14,6 @@ function start() {
   let stepCount = 0;
   const rowCount = 30;
   const columnCount = 40;
-  const flag = 0;
 
   createBlock();
 
@@ -44,53 +45,55 @@ function start() {
     isFinish();
   }
 
-  allBtns = document.querySelectorAll('.btn');
+  let allBtns = document.querySelectorAll('.btn');
   allBtns.forEach((btn, index) => {
     btn.addEventListener('click', () => {
       const score = document.querySelector('.scoreboard');
       for (let i = 0; i < rowCount; i++) {
         for (let j = 0; j < columnCount; j++) {
           if (grid[i][j] == 0) {
-            grid = checkBlock(grid, i, j, index + 1, flag);
+            let control = checkBlock(grid, i, j, index + 1, 0);
+            i = control['i'];
+            j = control['j'];
+            console.log('i', i);
           }
         }
       }
       score.textContent = ++stepCount;
-      displayGrid(grid);
+      displayGrid();
     });
   });
 
-  function checkBlock(grid, i, j, index, flag) {
-    if (grid[i]?.[j + 1] == index) {
-      grid[i][j + 1] = 0;
-      flag++;
-    }
-
-    if (grid[i + 1]?.[j] == index) {
-      grid[i + 1][j] = 0;
-      flag++;
-    }
-
-    if (grid[i]?.[j - 1] == index) {
-      grid[i][j - 1] = 0;
-      flag++;
-    }
-
-    if (grid[i - 1]?.[j] == index) {
+  function checkBlock(grid, i, j, color, flag) {
+    // top neighbor
+    if (grid[i - 1]?.[j] == color) {
       grid[i - 1][j] = 0;
-      flag++;
+      flag = 1;
     }
 
-    if (grid[i]?.[j + 1] == index) {
-      grid[i + 1][j + 1] = 0;
-      flag++;
+    // right neighbor
+    if (grid[i]?.[j + 1] == color) {
+      grid[i][j + 1] = 0;
+      flag = 1;
     }
 
-    if (!flag) {
-      return grid;
+    // bottom neighbor
+    if (grid[i + 1]?.[j] == color) {
+      grid[i + 1][j] = 0;
+      flag = 1;
     }
 
-    return checkBlock(grid, i, j, index, 0);
+    // left neighbor
+    if (grid[i]?.[j - 1] == color) {
+      grid[i][j - 1] = 0;
+      flag = 1;
+    }
+
+    if (flag == 1) {
+      return { i: 0, j: 0 };
+    } else if (flag == 0) {
+      return { i: i, j: j };
+    }
   }
 
   function isFinish() {
