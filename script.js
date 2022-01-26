@@ -55,7 +55,6 @@ function start() {
             let control = checkBlock(grid, i, j, index + 1, 0);
             i = control['i'];
             j = control['j'];
-            console.log('i', i);
           }
         }
       }
